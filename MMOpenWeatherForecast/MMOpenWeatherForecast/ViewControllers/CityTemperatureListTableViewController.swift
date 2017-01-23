@@ -9,8 +9,11 @@
 import SwiftOverlays
 import UIKit
 
-// closure which gets called when response is received by the manager layer
-typealias WeatherForecastResponseUIHandler = ((_ response : Any?, _ error : NSError?) -> Void)
+/* Closure
+ Recieves the response from the WeatherForecastResponseHandler
+ parameters: response : Any
+ error : NSError
+ */typealias WeatherForecastResponseUIHandler = ((_ response : Any?, _ error : NSError?) -> Void)
 
 class CityTemperatureListTableViewController: UITableViewController {
     @IBOutlet var tableViewTemperatureList: UITableView!
@@ -31,6 +34,7 @@ class CityTemperatureListTableViewController: UITableViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:" ", style:.plain, target:nil, action:nil)
     }
     
     func updateDatasource( weatherInfo : WeatherForecast) {
@@ -55,8 +59,9 @@ class CityTemperatureListTableViewController: UITableViewController {
     {
         self.tableViewTemperatureList.tableFooterView = UIView(frame: .zero)
         dataAvailabilityStatusDict = ["Melbourne" : -1, "Brisbane" : -1, "Sydney" : -1]
-        // create array of CityTemperatures
         
+        // Block base responseUIHandler.
+        // Receives the response, updaes the datasource and reloads the tableview
         let responseUIHandler : WeatherForecastResponseUIHandler = { (response: Any?, error: NSError?) in
             
             if error != nil
@@ -116,6 +121,7 @@ class CityTemperatureListTableViewController: UITableViewController {
         self.view.alpha = 0.5
         SwiftOverlays.showCenteredWaitOverlayWithText(self.view, text: "Please wait...")
         
+        // Call the getWeatherForecast webservice for each city
         for i in 0 ..< CITY_COUNT
         {
             let cityTemperature : CityTemperatures = CityTemperatures()
@@ -166,6 +172,7 @@ class CityTemperatureListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
+        // Pass the weatherForecast info to WeatherDetailsViewController
         let weatherForecast = cityTemperaturesArray[indexPath.row]
         
         let weatherDetailsVC = self.storyboard?.instantiateViewController(withIdentifier: UIWEATHERDETAILSVC) as? WeatherDetailsViewController

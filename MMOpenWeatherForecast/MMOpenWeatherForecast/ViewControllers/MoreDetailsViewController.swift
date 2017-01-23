@@ -16,6 +16,8 @@ class MoreDetailsViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableViewMoreDetails.tableFooterView = UIView(frame: .zero)
+        self.navigationController?.topViewController?.title = "More Weather Details"
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title:" ", style:.plain, target:nil, action:nil)
     }
 
     override func didReceiveMemoryWarning() {

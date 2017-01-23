@@ -18,5 +18,6 @@ class CityTemperatures: NSObject {
     /* city Id */
     var cityId : Int = -1
     
+    /* Full weatherInfo object which is received from the API */
     var weatherInfo : WeatherForecast = WeatherForecast()
 }

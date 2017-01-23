@@ -8,14 +8,18 @@
 
 import Foundation
 
+/*This generic protocol which is implemented in every Webservice class.
+    Used to call these methods when HTTPCommunication class receives any kind of response
+ */
 protocol CommunicationServiceProtocol {
     
+    // required methods
     func getRequestURL() -> String
     func handleResponse(_ data:Data)
     func handleFailure(_ error:NSError)
     func getHttpMethod() -> HTTP_METHOD
     
-    
+    // Optional methods
     func getRequestBody() -> AnyObject?
     func getHttpHeaders() -> NSDictionary? // marked as optional as not all requests may have headers and request bodies
     

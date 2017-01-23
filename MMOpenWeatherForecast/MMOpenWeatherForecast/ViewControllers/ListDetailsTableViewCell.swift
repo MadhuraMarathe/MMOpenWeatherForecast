@@ -8,6 +8,7 @@
 
 import UIKit
 
+// A custom UITableViewCell
 class ListDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var labelCityName: UILabel!
     @IBOutlet weak var labelTemperature: UILabel!

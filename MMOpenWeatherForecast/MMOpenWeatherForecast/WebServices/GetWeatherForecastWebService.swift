@@ -10,7 +10,9 @@ import Foundation
 
 class GetWeatherForecastWebService: CommunicationServiceProtocol {
 
+    // base URL
     let requestUrl = "http://api.openweathermap.org/data/2.5/weather?"
+    
     var cityId: Int = -1;
     var weatherForecast : WeatherForecast?
     let responseHandler: WeatherForecastResponseHandler
@@ -21,6 +23,7 @@ class GetWeatherForecastWebService: CommunicationServiceProtocol {
         self.responseHandler = responseHandler
     }
     
+    // returns the requestUrl
     func getRequestURL() -> String
     {
         var weatherInfoURL : String = requestUrl;
@@ -34,6 +37,9 @@ class GetWeatherForecastWebService: CommunicationServiceProtocol {
         return weatherInfoURL
     }
     
+    // MARK: CommunicationServiceProtocol methods
+    
+    // handles the response
     func handleResponse(_ data:Data)
     {
         do{
@@ -49,25 +55,37 @@ class GetWeatherForecastWebService: CommunicationServiceProtocol {
         }
     }
     
+    
+    // handles the failure
     func handleFailure(_ error:NSError)
     {
         responseHandler(nil, error)
     }
     
+    // returns the request body
     func getRequestBody() -> AnyObject?
     {
         return nil
     }
     
+    // returns the Http headers
     func getHttpHeaders() -> NSDictionary?
     {
         return nil
     }
     
+    // returns the Http Method
     func getHttpMethod() -> HTTP_METHOD
     {
         return HTTP_METHOD.GET
     }
+    
+    /*
+     Parses the json response y
+     parameters:
+     1) jsonResult : [String:Any]
+     Returns: WeatherForecast object
+     */
     
     private func parseResponse(jsonResult : [String:Any]!) -> WeatherForecast
     {
