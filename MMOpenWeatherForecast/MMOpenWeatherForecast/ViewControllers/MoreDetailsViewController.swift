@@ -16,7 +16,15 @@ class MoreDetailsViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableViewMoreDetails.tableFooterView = UIView(frame: .zero)
-        self.navigationController?.topViewController?.title = "More Weather Details"
+        
+        if(weatherInfo?.name != nil)
+        {
+            self.navigationController?.topViewController?.title = "\(weatherInfo!.name) : More Weather Details"
+        }
+        else
+        {
+            self.navigationController?.topViewController?.title = "More Weather Details"
+        }
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:" ", style:.plain, target:nil, action:nil)
     }
 
