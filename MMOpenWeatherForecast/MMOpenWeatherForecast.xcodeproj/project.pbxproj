@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		877830E81E375BE7008A8885 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877830E71E375BE7008A8885 /* MapViewController.swift */; };
+		87F435E71E378052009579BF /* MapCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F435E61E378052009579BF /* MapCity.swift */; };
 		E0A711481E31D2B900643774 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A711471E31D2B900643774 /* AppDelegate.swift */; };
 		E0A711501E31D2BA00643774 /* MMOpenWeatherForecast.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E0A7114E1E31D2BA00643774 /* MMOpenWeatherForecast.xcdatamodeld */; };
 		E0A711521E31D2BA00643774 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0A711511E31D2BA00643774 /* Assets.xcassets */; };
@@ -61,6 +63,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		877830E71E375BE7008A8885 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		87F435E61E378052009579BF /* MapCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapCity.swift; sourceTree = "<group>"; };
 		E0A711441E31D2B700643774 /* MMOpenWeatherForecast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MMOpenWeatherForecast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0A711471E31D2B900643774 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0A7114F1E31D2BA00643774 /* MMOpenWeatherForecast.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MMOpenWeatherForecast.xcdatamodel; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 			children = (
 				E0A7119D1E31E25100643774 /* WeatherForecast.swift */,
 				E0A711A41E31E57100643774 /* CityTemperatures.swift */,
+				87F435E61E378052009579BF /* MapCity.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 				E0A7119B1E31DA9600643774 /* ListDetailsTableViewCell.swift */,
 				FF78A4751E3491DD009CFF11 /* WeatherDetailsViewController.swift */,
 				FFF19BFB1E34F940005418E0 /* MoreDetailsViewController.swift */,
+				877830E71E375BE7008A8885 /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -388,7 +394,9 @@
 				E0A711A71E31E6D200643774 /* Constants.swift in Sources */,
 				E0A7119C1E31DA9600643774 /* ListDetailsTableViewCell.swift in Sources */,
 				E0A711B71E32250D00643774 /* WeatherForecastManager.swift in Sources */,
+				87F435E71E378052009579BF /* MapCity.swift in Sources */,
 				E0A7119A1E31D90500643774 /* CityTemperatureListTableViewController.swift in Sources */,
+				877830E81E375BE7008A8885 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

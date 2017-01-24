@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,7 +28,7 @@
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HPH-Jw-x8S" id="bbm-wH-UCS">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sydney" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rg3-i9-dSQ">
@@ -71,14 +70,66 @@
                             <outlet property="delegate" destination="Let-mM-sXX" id="RdA-07-nWK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Weather Temperatures" id="Ntk-Q2-m7N"/>
+                    <navigationItem key="navigationItem" title="Weather Temperatures" id="Ntk-Q2-m7N">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="jdV-WG-cY5">
+                            <connections>
+                                <action selector="openMapAction:" destination="Let-mM-sXX" id="KgK-hW-rSB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="mapBarButton" destination="jdV-WG-cY5" id="LJI-RM-Xl7"/>
                         <outlet property="tableViewTemperatureList" destination="XEp-Sy-zDZ" id="gzT-Up-GcK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bk8-sq-JPW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1098.4000000000001" y="274.81259370314842"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="ATJ-qb-LU7">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="5kd-Ma-oyT" customClass="MapViewController" customModule="MMOpenWeatherForecast" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RwC-Cx-Atg"/>
+                        <viewControllerLayoutGuide type="bottom" id="q3K-zN-ntg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b1H-Wb-knc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dZY-9c-iXB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
+                            </mapView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yyI-Zl-Jsn">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="Type" id="gd1-VD-wO9">
+                                        <connections>
+                                            <action selector="changeMapTypeAction:" destination="5kd-Ma-oyT" id="WLi-QG-B7M"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dZY-9c-iXB" firstAttribute="leading" secondItem="b1H-Wb-knc" secondAttribute="leading" id="3G7-GO-8Nm"/>
+                            <constraint firstAttribute="trailing" secondItem="yyI-Zl-Jsn" secondAttribute="trailing" id="ITp-Sl-o7y"/>
+                            <constraint firstItem="yyI-Zl-Jsn" firstAttribute="leading" secondItem="b1H-Wb-knc" secondAttribute="leading" id="Jg6-GF-C2U"/>
+                            <constraint firstItem="yyI-Zl-Jsn" firstAttribute="top" secondItem="dZY-9c-iXB" secondAttribute="bottom" id="JiW-c4-pOe"/>
+                            <constraint firstAttribute="trailing" secondItem="dZY-9c-iXB" secondAttribute="trailing" id="Sjs-YH-MIe"/>
+                            <constraint firstItem="dZY-9c-iXB" firstAttribute="top" secondItem="b1H-Wb-knc" secondAttribute="top" id="bIV-zC-NEy"/>
+                            <constraint firstItem="q3K-zN-ntg" firstAttribute="top" secondItem="yyI-Zl-Jsn" secondAttribute="bottom" id="kzR-fo-Y3z"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="dZY-9c-iXB" id="Qml-4e-qFV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3zg-OO-xDh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2032.5" y="-385.56338028169017"/>
         </scene>
         <!--Weather Details View Controller-->
         <scene sceneID="QDQ-LR-Ni2">
@@ -205,18 +256,18 @@
                                         <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FfT-3d-fUD" id="Xo4-4z-aWo">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pvx-in-hyD">
-                                                    <rect key="frame" x="15" y="11" width="34" height="21"/>
+                                                    <rect key="frame" x="15" y="12" width="34" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ebx-Ya-pa9">
-                                                    <rect key="frame" x="241" y="12" width="44" height="20"/>
+                                                    <rect key="frame" x="241.5" y="13" width="43.5" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.2784313725" green="0.52941176469999995" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>

@@ -24,6 +24,7 @@ class CityTemperatureListTableViewController: UITableViewController {
     var dataAvailabilityStatusDict : NSMutableDictionary = ["Melbourne" : -1, "Brisbane" : -1, "Sydney" : -1]
     
     let CITY_COUNT = 3
+    @IBOutlet weak var mapBarButton: UIBarButtonItem!
     
     var bShouldUpdateUI = false
 
@@ -57,6 +58,10 @@ class CityTemperatureListTableViewController: UITableViewController {
     
     func setUpUI()
     {
+        // disable map button till response is received
+        mapBarButton.isEnabled = false
+        mapBarButton.tintColor = UIColor.clear
+        
         self.tableViewTemperatureList.tableFooterView = UIView(frame: .zero)
         dataAvailabilityStatusDict = ["Melbourne" : -1, "Brisbane" : -1, "Sydney" : -1]
         
@@ -112,6 +117,9 @@ class CityTemperatureListTableViewController: UITableViewController {
                         SwiftOverlays.removeAllOverlaysFromView(self.view)
                         self.view.alpha = 1
                         self.tableViewTemperatureList.reloadData()
+                        // enable map button
+                        self.mapBarButton.isEnabled = true
+                        self.mapBarButton.tintColor = UIColor.black
                     }
                 }
             }
@@ -180,5 +188,16 @@ class CityTemperatureListTableViewController: UITableViewController {
         weatherDetailsVC?.weatherInfo = weatherForecast.weatherInfo
         
         self.navigationController?.show(weatherDetailsVC!, sender: self)
+    }
+    
+    // MARK: IBAction 
+    // view cities in map
+    @IBAction func openMapAction(_ sender: Any)
+    {
+        let viewCitiesInMap = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as? MapViewController
+        
+        viewCitiesInMap?.cityTemperaturesArray = cityTemperaturesArray
+        
+        self.navigationController?.show(viewCitiesInMap!, sender: self)
     }
 }
